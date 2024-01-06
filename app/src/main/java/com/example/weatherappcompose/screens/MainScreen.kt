@@ -1,7 +1,5 @@
 package com.example.weatherappcompose.screens
 
-import android.content.Context
-import android.widget.EditText
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,14 +11,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,20 +35,12 @@ import com.example.weatherappcompose.ui.theme.BlueLight
 
 @Preview(showBackground = true, device = "spec:width=1080px,height=2340px,dpi=320")
 @Composable
-fun MainScreen() {
+fun MainCard() {
 
 
-    Image(
-        painter = painterResource(id = R.drawable.main_fon),
-        contentDescription = "main_fon",
-        modifier = Modifier
-            .fillMaxSize()
-            .alpha(0.5f),
-        contentScale = ContentScale.Crop
-    )
+
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .padding(5.dp),
     ) {
         //CARD ......................................................................
@@ -95,12 +87,12 @@ fun MainScreen() {
                 )
                 Text(
                     text = "25 C",
-                    style = TextStyle(fontSize = 45.sp),
+                    style = TextStyle(fontSize = 65.sp),
                     color = Color.White
                 )
                 Text(
                     text = "Облочно",
-                    style = TextStyle(fontSize = 25.sp),
+                    style = TextStyle(fontSize = 16.sp),
                     color = Color.White
                 )
 
@@ -108,8 +100,25 @@ fun MainScreen() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(text = "asdfds",color = Color.White)
-                    Text(text = "asdfds",color = Color.White)
+                    IconButton(onClick = {  }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.is_serarc),
+                            contentDescription = "serch",
+                            tint = Color.White
+                            )
+                    }
+                    Text(text = "12 C/ 1 C",
+                        modifier = Modifier.padding(top = 5.dp),
+                        style = TextStyle(fontSize = 16.sp),
+                        color = Color.White)
+
+                    IconButton(onClick = {  }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.is_sync),
+                            contentDescription = "sync",
+                            tint = Color.White
+                        )
+                    }
                 }
             }
 
@@ -119,3 +128,24 @@ fun MainScreen() {
 
 }
 
+@Composable
+fun TabLayout(){
+    val tabList = listOf("HOURS", "DAYS")
+    Column (
+        modifier = Modifier.clip(RoundedCornerShape(5.dp))
+    ) {
+        TabRow(
+            selectedTabIndex = 0,
+            indicator = {},
+            containerColor = BlueLight
+            ) {
+            tabList.forEachIndexed{indx, text ->
+                Tab(
+                    selected = false,
+                    onClick = { },
+                    text = { Text(text = text)})
+                
+            }
+        }
+    }
+}
