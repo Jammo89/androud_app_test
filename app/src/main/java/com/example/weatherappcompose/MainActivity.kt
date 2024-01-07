@@ -13,9 +13,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.weatherappcompose.screens.MainCard
 import com.example.weatherappcompose.screens.TabLayout
-
 import com.example.weatherappcompose.ui.theme.WeatherAppComposeTheme
-
+import com.example.weatherappcompose.screens.ListItem
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +32,12 @@ class MainActivity : ComponentActivity() {
                 Column {
                     MainCard()
                     TabLayout()
+                    ListItem()
                 }
 
             }
         }
     }
 }
+
 const val KEY_API = "2d0f72952eec453aa8a151834240101"

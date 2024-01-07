@@ -30,12 +30,9 @@ import com.example.weatherappcompose.R
 import com.example.weatherappcompose.ui.theme.BlueLight
 
 
-@Preview(showBackground = true, device = "spec:width=1080px,height=2340px,dpi=320")
+@Preview(showBackground = true, device = "spec:width=400px,height=1000px,dpi=240")
 @Composable
 fun MainCard() {
-
-
-
     Column(
         modifier = Modifier
             .padding(5.dp),
@@ -97,19 +94,21 @@ fun MainCard() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = { }) {
                         Icon(
                             painter = painterResource(id = R.drawable.is_serarc),
                             contentDescription = "serch",
                             tint = Color.White
-                            )
+                        )
                     }
-                    Text(text = "12 C/ 1 C",
+                    Text(
+                        text = "12 C/ 1 C",
                         modifier = Modifier.padding(top = 5.dp),
                         style = TextStyle(fontSize = 16.sp),
-                        color = Color.White)
+                        color = Color.White
+                    )
 
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = { }) {
                         Icon(
                             painter = painterResource(id = R.drawable.is_sync),
                             contentDescription = "sync",
@@ -125,23 +124,26 @@ fun MainCard() {
 
 }
 
+
 @Composable
-fun TabLayout(){
+fun TabLayout() {
+
     val tabList = listOf("HOURS", "DAYS")
-    Column (
+
+    Column(
         modifier = Modifier.clip(RoundedCornerShape(5.dp))
     ) {
         TabRow(
             selectedTabIndex = 0,
             indicator = {},
             containerColor = BlueLight
-            ) {
-            tabList.forEachIndexed{indx, text ->
+        ) {
+            tabList.forEachIndexed { index, text ->
                 Tab(
                     selected = false,
                     onClick = { },
-                    text = { Text(text = text)})
-                
+                    text = { Text(text = text) })
+
             }
         }
     }
